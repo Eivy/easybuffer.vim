@@ -25,6 +25,10 @@ endif
 if !exists("g:easybuffer_cursorline")
     let g:easybuffer_cursorline = 1
 endif
+
+if !exists("g:easybuffer_split_open")
+    let g:easybuffer_split_open = 0
+endif
 " }}}
 
 " check for available command {{{
@@ -42,10 +46,10 @@ endif
 command! -bang EasyBuffer call easybuffer#OpenEasyBuffer('<bang>',g:easybuffer_keep.'edit')
 command! -bang EasyBufferClose call easybuffer#CloseEasyBuffer()
 command! -bang EasyBufferToggle call easybuffer#ToggleEasyBuffer()
-command! -bang EasyBufferHorizontal call easybuffer#OpenEasyBuffer('<bang>',g:easybuffer_keep.(&lines/2).'sp')
-command! -bang EasyBufferHorizontalBelow call easybuffer#OpenEasyBuffer('<bang>',g:easybuffer_keep.'belowright '.(&lines/2).'sp')
+command! -bang EasyBufferHorizontal call easybuffer#OpenEasyBuffer('<bang>',g:easybuffer_keep.'sp')
+command! -bang EasyBufferHorizontalBelow call easybuffer#OpenEasyBuffer('<bang>',g:easybuffer_keep.'belowright sp')
 command! -bang EasyBufferVertical call easybuffer#OpenEasyBuffer('<bang>',g:easybuffer_keep.(&columns/2).'vs')
-command! -bang EasyBufferVerticalRight call easybuffer#OpenEasyBuffer('<bang>',g:easybuffer_keep.'belowright '.(&columns/2).'vs')
+command! -bang EasyBufferVerticalRight call easybuffer#OpenEasyBuffer('<bang>',g:easybuffer_keep.'belowright vs')
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
