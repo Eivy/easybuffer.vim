@@ -59,7 +59,7 @@ function! s:SelectBuf(bnr,...)
         if !xor(g:easybuffer_split_open, a:0)
             exe g:easybuffer_keep.prevbnr.'buffer'
         else
-            exe 'keepalt sbuffer'
+            exe 'keepalt '.g:easybuffer_keep.prevbnr.'sbuffer'
         endif
     endif
     if prevbnr != a:bnr
