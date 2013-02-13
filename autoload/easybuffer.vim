@@ -59,9 +59,6 @@ function! s:SelectBuf(bnr,...)
         if !xor(g:easybuffer_split_open, a:0)
             exe g:easybuffer_keep.prevbnr.'buffer'
         else
-            if winnr('$') > 1
-                close
-            endif
             exe 'keepalt sbuffer'
         endif
     endif
@@ -69,10 +66,8 @@ function! s:SelectBuf(bnr,...)
         if !xor(g:easybuffer_split_open, a:0)
             exe a:bnr.'buffer'
         else
-            if winnr('$') > 1
-                close
-            endif
-            exe 'keepalt sbuffer'
+            close
+            exe 'keepalt '.a:bnr.'sbuffer'
         endif
     endif
 endfunction
