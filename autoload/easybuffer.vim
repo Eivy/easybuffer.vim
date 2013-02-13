@@ -51,17 +51,11 @@ endfunction
 
 " buffer related functions {{{
 function! s:SelectBuf(bnr,...)
-    "if a:0 == 1
-        "let l:capFlg = 1
-    "else
-        "let l:capFlg = 0
-    "endif
     if !(getbufvar('%','win') =~ ' edit')
         bwipeout!
     endif
     let prevbnr = getbufvar('%','prevbnr')
     if bufnr('%') != prevbnr
-        "if !xor(g:easybuffer_split_open, l:capFlg)
         if !xor(g:easybuffer_split_open, a:0)
             exe g:easybuffer_keep.prevbnr.'buffer'
         else
@@ -400,12 +394,12 @@ function! easybuffer#OpenEasyBuffer(bang,win)
         if g:easybuffer_cursorline
             setlocal cursorline
         endif
-        nnoremap <silent> <buffer> <Esc> :call <SID>ClearInput()<CR>
-        nnoremap <silent> <buffer> d :call <SID>DelBuffer()<CR>
-        nnoremap <silent> <buffer> D :call <SID>WipeoutBuffer()<CR>
-        nnoremap <silent> <buffer> R :call <SID>Refresh()<CR>
-        nnoremap <silent> <buffer> q :call easybuffer#CloseEasyBuffer()<CR>
-        nnoremap <silent> <buffer> <Enter> :call <SID>EnterPressed()<CR>
+        nnoremap <silent> <buffer> <Esc>     :call <SID>ClearInput()<CR>
+        nnoremap <silent> <buffer> d         :call <SID>DelBuffer()<CR>
+        nnoremap <silent> <buffer> D         :call <SID>WipeoutBuffer()<CR>
+        nnoremap <silent> <buffer> R         :call <SID>Refresh()<CR>
+        nnoremap <silent> <buffer> q         :call easybuffer#CloseEasyBuffer()<CR>
+        nnoremap <silent> <buffer> <Enter>   :call <SID>EnterPressed()<CR>
         nnoremap <silent> <buffer> <S-Enter> :call <SID>EnterPressed(1)<CR>
         for i in range(10)
             exe 'nnoremap <silent> <buffer> '.i." :call <SID>NumberPressed(".i.")<CR>"
